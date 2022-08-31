@@ -6,7 +6,10 @@
 
 # 导入os模块，模块的概念后面讲到
 import os
+
 # os.listdir可以列出文件和目录
 print([d for d in os.listdir('.')])
 
+L1 = ['Hello', 'World', 18, 'Apple', None]
 
+print([s.lower() if isinstance(s, str) else s for s in L1])
