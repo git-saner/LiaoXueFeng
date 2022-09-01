@@ -3,3 +3,7 @@
 # @Author : Saner
 # @File : 4-生成器.py
 # @Software : PyCharm
+
+a, b = 0, 1
+a, b = b, a + b
+print(a, b)
