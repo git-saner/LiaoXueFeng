@@ -3,6 +3,11 @@
 # @Author : Saner
 # @File : 访问限制.py
 # @Software : PyCharm
+'''
+    1.如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线__
+
+
+'''
 
 '''
 class Student(object):
