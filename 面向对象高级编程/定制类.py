@@ -13,6 +13,7 @@
 
 
 class Fib(object):
+
     def __init__(self):
         self.a, self.b = 0, 1
 
@@ -59,11 +60,15 @@ class Student(object):
         if item == 'score':
             return 100
         if item == 'age':
-            return lambda: 25
+            return lambda: 20
+
+    def __call__(self, *args, **kwargs):
+        print("My name is %s" % self.name)
 
 
 class Chain(object):
 
+    # path='' 表示如果实例化类时未给出path的值，则使用path的默认值''
     def __init__(self, path=''):
         self._path = path
 
@@ -73,18 +78,30 @@ class Chain(object):
     def __str__(self):
         return self._path
 
+    # __call__使得类实例可以被当作函数一般来调用
+    def __call__(self, attr=''):
+        return Chain('%s/%s' % (self._path, attr))
+
     __repr__ = __str__
 
 
-if __name__ == '__main__':
-    pass
-    # for n in Fib():
-    #     print(n)
-    # f = Fib()
-    # print(f[0])
-    # print(f[0:5])
-    #
-    # print(Student('Michael').score)
-    # print(Student('Michael').age())
+class testChain(object):
+    def __init__(self, path=''):
+        self.path = path
 
-    print(Chain().status.user.timeline.list)
+    def __str__(self):
+        return self.path
+
+    def __getattr__(self, item):
+        return testChain("%s/%s" % (self.path, item))
+
+    def __call__(self, attr=''):
+        return testChain("%s/%s" % (self.path, attr))
+
+
+if __name__ == '__main__':
+    print(testChain().st)
+    print(testChain('aaa'))
+    print(testChain().status.user.timeline.list)
+    print(testChain().users('michael').repos)
+    pass
