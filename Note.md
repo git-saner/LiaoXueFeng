@@ -4,6 +4,28 @@
 
 `L[0:3]`表示，从索引`0`开始取，直到索引`3`为止，但不包括索引`3`。
 
+## 迭代
+
+迭代（Iteration）：可以通过for循环进行遍历
+
+只要是可迭代对象，无论有无下标，都可以迭代
+
+通过`collections.abc`模块的`Iterable`类型判断是否是可迭代对象
+
+`isinstance(obj,Iterable)`  返回布尔型变量
+
+可以通过`enumerate`函数实现下标
+
+```python
+>>> for i,value in enumerate(['a','b','c']):
+	print(i,value)
+0 a
+1 b
+2 c
+```
+
+
+
 ## 生成器
 
 1. 在Python中，这种一边循环一边计算的机制，称为生成器：
